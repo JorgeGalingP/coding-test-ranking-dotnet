@@ -7,23 +7,37 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace coding_test_ranking.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values")]
     [ApiController]
     public class AdsController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
+        [HttpGet("qualityListing")]
         public ActionResult<IEnumerable<QualityAd>> qualityListing()
         {
-            return NotFound();
+            List<QualityAd> qualityAds = new List<QualityAd>();
+            QualityAd quality = new QualityAd();
+            quality.Id = 1;
+            quality.Typology = "A";
+            quality.Description = "Lorem Ipsum";
+
+            qualityAds.Add(quality);
+
+            if (qualityAds == null)
+            {
+                return NotFound();
+            }
+
+            return qualityAds;
         }
-        [HttpGet]
+
+        [HttpGet("publicListing")]
         public ActionResult<IEnumerable<PublicAd>> publicListing()
         {
             return NotFound();
         }
 
-        [HttpGet]
+        [HttpGet("calculateScore")]
+
         public ActionResult calculateScore()
         {
             return NotFound();
